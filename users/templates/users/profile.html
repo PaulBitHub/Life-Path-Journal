@@ -1,0 +1,30 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+<main class="main-box lock"><!---->
+    <div class="content">
+        <div class="form-page form-profile">
+            <div class="form-page__box">
+                <div class="dr-form__box">
+                    <h2 class="dr-title__line dr-title__sm">
+                        Профиль
+                    </h2>
+                    <p class="text-center"><img class="text-center" src="{{ user.avatar | media_filter }}"
+                                                width="100" height="100">
+                    </p>
+                    <p class="dr-form__p">Никнейм: {{ user.username }}</p>
+                    <p class="dr-form__p">Фамилия: {{ user.last_name }}</p>
+                    <p class="dr-form__p">Имя: {{ user.first_name }}</p>
+                    <p class="dr-form__p">E-mail: {{ user.email }}</p>
+                    <a href="{% url 'users:profile' %}" class="dr-btn__border no_link">Редактировать профиль</a>
+
+                </div>
+                <div class="form-page__action">
+                    <a href="{% url 'diary:list' %}" class="dr-btn dr-btn__coral dr-btn__small">Вернуться назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
