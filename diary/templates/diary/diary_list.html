@@ -1,0 +1,42 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+<main class="main-box lock">
+    <div class="content-auto">
+        <div class="album py-5 page page-home" style="background-image: linear-gradient(145deg,rgba(131,206,237,1)28.203505277633667%,rgba(122,191,255,1)100%);">
+            <h1 class="text_list" style="color: #FFF;">{{ title }}</h1><br>
+            <div class="container">
+                <div class="row">
+                    {% for object in object_list %}
+                    <div class="col-md-3">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h3 class="text-center">{{ object.title }}</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-center">{{ object.cd_date }}</p>
+                                <div class="form-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-outline-secondary"
+                                               href="{% url 'diary:detail' object.pk %}">Просмотр</a>
+                                            <a class="btn btn-sm btn-outline-secondary"
+                                               href="{% url 'diary:update' object.pk %}">Редактировать</a>
+                                            <a class="btn btn-sm btn-outline-secondary"
+                                               href="{% url 'diary:delete' object.pk%}">Удалить</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

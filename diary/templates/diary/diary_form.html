@@ -1,0 +1,67 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+<main class="main-box lock">
+    <div class="content-auto">
+        <div class="page page-home" style="background-color: rgb(136, 117, 183);">
+            <div class="container-fluid">
+                <div class="form-center">
+                    <div class="post-single">
+                        <form class="row" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="post-preview">
+                                <div class="dr-post">
+                                    <div class="dr-post__body" style="background-color: rgb(255, 255, 255);">
+                                        <h1 class="dr-title__line dr-title__sm">{{title}}</h1>
+                                        {{ form.title }}<br>
+                                        {{ form.description }} <br>
+                                        {% if object.image %}
+                                        <div class="dr-form__group">
+                                            <div class="dr-imgradio">
+                                                <div class="dr-imgradio__item">
+                                                    <div class="dr-imgradio__img">
+                                                        <img src="{{ object.image | media_filter }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        <label class="blockbtn__dfl">
+                                            {{ form.image }}
+                                            <svg width="34" height="34" viewBox="0 0 34 34"
+                                                 fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg"
+                                                 class="blockbtn__dfl-img">
+                                                <path d="M17 25.5L6.375 14.875L9.35 11.7937L14.875 17.3187V0H19.125V17.3187L24.65 11.7937L27.625 14.875L17 25.5ZM4.25 34C3.08125 34 2.08108 33.5842 1.2495 32.7526C0.417916 31.921 0.00141667 30.9202 0 29.75V23.375H4.25V29.75H29.75V23.375H34V29.75C34 30.9187 33.5842 31.9196 32.7526 32.7526C31.921 33.5856 30.9202 34.0014 29.75 34H4.25Z"
+                                                      fill="#FC9D74">
+                                                </path>
+                                            </svg>
+                                            <div class="blockbtn__dfl-content">
+                                                <div class="blockbtn__dfl-title">Загрузить с компьютера</div>
+                                                <div class="blockbtn__dfl-text">JPEG, PNG, GIF, WEBP, размер до 6 Мб
+                                                </div>
+                                            </div>
+                                        </label>
+                                        {{ form.cd_date }}
+                                        <br>
+                                        <button type="submit" class="btn btn-success">
+                                            {% if object %}
+                                            Сохранить
+                                            {% else %}
+                                            Создать
+                                            {% endif %}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+<script>document.getElementById('davaToday').valueAsDate = new Date();</script>
+data-uk-datepicker="{weekstart:0, format:'DD.MM.YYYY'}"

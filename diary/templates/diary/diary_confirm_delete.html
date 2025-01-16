@@ -1,0 +1,36 @@
+{% extends 'diary/base.html' %}
+{% load my_tags %}
+{% block content %}
+<main class="main-box lock">
+    <div class="page page-home">
+        <div class="content-auto">
+            <div class="container-fluid">
+                <div class="form-center">
+                    <div class="post-single">
+                        <form method="post" class="row">
+                            {% csrf_token %}
+                            <div class="post-preview">
+                                <div class="dr-post">
+                                    <div class="dr-post__body" style="background-color: rgb(255, 255, 255);">
+                                        <h1 class="dr-title__line dr-title__sm">
+                                            Удаление записи
+                                        </h1>
+                                        <h1 style="text-align: center;">Вы уверены, что хотите удалить запись <br>"{{
+                                            object.title }}"?</h1>
+                                        <button type="submit" class="btn btn-danger"
+                                                style="font-size: 25px; margin-top: 40px;">Подтвердить
+                                        </button>
+                                        <br>
+                                        <a href="{% url 'diary:list' %}" class="btn btn-success"
+                                           style="font-size: 25px;">Отмена</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://getbootstrap.com/docs/5.3/examples/pricing/ -->
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>{{ title }}</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}" sizes="16x16" type="image/png">
+
+    <link rel="stylesheet" href="{% static 'css/static.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css">
+     <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min2.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/album.css' %}" rel="stylesheet">
+
+
+</head>
+<body>
+{% include 'diary/includes/inc_nav_menu.html' %}
+{% block content %}
+
+{% endblock %}
+{% if request.path == '/diary/index/' %}
+<footer class="text-muted">
+    <div class="container">
+        <p class="float-right">
+
+        </p>
+        <p>&copy; 2024 - {% now 'Y' %}</p>
+
+    </div>
+</footer>
+{% endif %}
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

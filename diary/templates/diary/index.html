@@ -1,0 +1,302 @@
+{% extends 'diary/base.html' %}
+{% load static %}
+{% load my_tags %}
+{% block content %}
+<main>
+    <section class="auth-section">
+        <div class="dr-container">
+            <div class="row">
+                <div class="col-sm-5 col-xs-12">
+                    <div class="dr-login-page">
+                        <div class="dr-login-page__content">
+                            <h1 class="dr-title">Ваш личный дневник <br>"Мой дневник"</h1>
+                            <div class="auth-section__title">
+                                для ярких воспоминаний,
+                                <br>
+                                сильных чувств и интересных идей
+                            </div>
+                            <p class="dr-text">
+                                Сохраните самые ценные впечатления, приведите в
+                                <br>
+                                порядок свои мысли и помогите себе вырасти над собой.
+                                <br>
+                                Напишите свою историю с Мой дневник!
+                            </p>
+                            {% if not user.is_authenticated %}
+                            <div class="a-center">
+                                <a href="{% url 'users:register' %}" class="btn btn-success btn-lg" id="registerBtn">
+                                    Завести новый дневник
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-7 col-sm-7">
+                    <div class="auth-form__wrap">
+                        <div class="auth-form__box">
+                            <p class="dr-text text-center">
+                                А если у тебя уже есть дневник у нас,
+                                <br>
+                                то скорей входи и пиши свои ценные впечатления, мысли и идеи!
+                            </p>
+                            {% if not user.is_authenticated %}
+                            <div class="a-center">
+                                <a href="{% url 'users:login' %}" class="btn btn-success btn-lg">
+                                    Войти в свой дневник
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="a-center">
+                                <a href="{% url 'diary:list' %}" class="btn btn-success btn-lg">
+                                    Мои записи
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen_1 dr-section" id="about">
+        <div class="container">
+            <div class="title-group">
+                <h2 class="title">Добро пожаловать в Мой дневник</h2>
+                <div class="subtitle">Ваш дневник на каждый день!</div>
+            </div>
+            <div class="screen_1__body">
+                <div class="screen_1__text screen_1__text1">
+                    <p>
+                        Мы сделали для вас простой и удобный сервис, в котором легко вести личные записи на любую тему.
+                        Эмоции, идеи, переживания и впечатления – сохраняйте всё, что с вами происходит, и делитесь
+                        записями с друзьями. Или оставьте их только для себя, как собственную маленькую тайну ;)
+                    </p>
+
+                </div>
+                <div class="screen_1__slider-wrap">
+                    <img src="{% static 'images/page_1.png' %}">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="screen_2 dr-section">
+        <div class="container">
+            <div class="title-group>">
+                <h2 class="title">Сохраняйте всё, что для вас важно!</h2>
+                <div class="subtitle">
+                    Для каждого дня Мой дневник позволяет создать несколько страниц с разными записями.
+                </div>
+            </div>
+            <div class="screen_2__body">
+                <div class="tns-outer" id="tns1-ow">
+                    <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide
+                        <span class="current">9 to 12</span> of 5
+                    </div>
+                    <div id="tns1-mw" class="tns-ovh">
+                        <div class="tns-inner" id="tns1-iw">
+                            <div class="screen_2__slider  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal">
+                                <div class="tns-item">
+                                    <div class="screen_2__slide">
+                                        <img class="screen_2__img"
+                                             src="{% static 'images/screen_2_3.png' %}"
+                                             alt="Впечатления и эмоции" title="Впечатления и эмоции">
+                                        <div class="screen_2__title">Впечатления и эмоции</div>
+                                    </div>
+                                </div>
+                                <div class="tns-item" aria-hidden="true" tabindex="-1">
+                                    <div class="screen_2__slide">
+                                        <img class="screen_2__img"
+                                             src="{% static 'images/screen_2_4.png' %}"
+                                             alt="Дневник питания" title="Дневник питания">
+                                        <div class="screen_2__title">Дневник питания</div>
+                                    </div>
+                                </div>
+                                <div class="tns-item" aria-hidden="true" tabindex="-1">
+                                    <div class="screen_2__slide">
+                                        <img class="screen_2__img"
+                                             src="{% static 'images/screen_2_5.png' %}"
+                                             alt="Наблюдение за самочувствием" title="Наблюдение за самочувствием">
+                                        <div class="screen_2__title">Наблюдение за самочувствием</div>
+                                    </div>
+                                </div>
+                                <div class="tns-item" aria-hidden="true" tabindex="-1">
+                                    <div class="screen_2__slide">
+                                        <img class="screen_2__img"
+                                             src="{% static 'images/screen_2_1.png' %}"
+                                             alt="Личные заметки" title="Личные заметки">
+                                        <div class="screen_2__title">Личные заметки</div>
+                                    </div>
+                                </div>
+                                <div class="tns-item" aria-hidden="true" tabindex="-1">
+                                    <div class="screen_2__slide">
+                                        <img class="screen_2__img"
+                                             src="{% static 'images/screen_2_2.png' %}"
+                                             alt="Планы на неделю" title="Планы на неделю">
+                                        <div class="screen_2__title">Планы на неделю</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="screen_3  dr-section">
+        <div class="container">
+            <div class="title-group">
+                <h2 class="title">Ваш дневник – ваши правила</h2>
+            </div>
+            <div class="screen_3__body">
+                <div class="screen_3__row">
+                    <div class="screen_3__item">
+                        <div class="screen_3__icon"><img src="{% static 'images/feature_2.svg' %}"
+                                                         alt="Удобный календарь"></div>
+                        <div class="screen_3__item-body">
+                            <div class="screen_3__item-title">Удобный календарь</div>
+                            <div class="screen_3__item-text">
+                                Просматривайте уже сделанные записи, перемещаясь между ними в один-два клика.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen_3__item">
+                        <div class="screen_3__icon"><img src="{% static 'images/feature_4.svg' %}"
+                                                         alt="Загрузка изображении"></div>
+                        <div class="screen_3__item-body">
+                            <div class="screen_3__item-title">Загрузка изображении</div>
+                            <div class="screen_3__item-text">
+                                Добавляйте свои картинки
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen_3__item">
+                        <div class="screen_3__icon"><img src="{% static 'images/feature_5.svg' %}"
+                                                         alt="Поиск по записям"></div>
+                        <div class="screen_3__item-body">
+                            <div class="screen_3__item-title">Поиск по записям</div>
+                            <div class="screen_3__item-text">
+                                Находите записи различными способами. С помощью текстового поиска или с помощью
+                                меток.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="screen_4  dr-section" id="reasons">
+        <div class="container">
+            <div class="title-group">
+                <h2 class="title">Зачем вести дневник</h2>
+                <div class="subtitle">Завести дневник - это один из самых эффективных способов <br>саморазвития и
+                    личностного роста
+                </div>
+            </div>
+            <div class="screen_4__body">
+                <div class="screen_4__item">
+                    <div class="screen_4__img">
+                        <img src="{% static 'images/why_1.png' %}"
+                             alt="Самопознание и саморефлексия">
+                    </div>
+                    <div class="screen_4__block">
+                        <h3 class="screen_4__title">Самопознание и саморефлексия </h3>
+                        <div class="screen_4__text">Дневник помогает лучше понять свои мысли, чувства, эмоции и
+                            переживания. Он позволяет проанализировать события, произошедшие за день, и сделать
+                            выводы о том, как они влияют на вашу жизнь.
+                        </div>
+                    </div>
+                </div>
+                <div class="screen_4__item">
+                    <div class="screen_4__img">
+                        <img src="{% static 'images/why_2.png' %}" alt="Управление временем">
+                    </div>
+                    <div class="screen_4__block">
+                        <h3 class="screen_4__title">Управление временем</h3>
+                        <div class="screen_4__text">Записывая свои планы и цели на день, вы можете отслеживать свой
+                            прогресс и видеть, где можно улучшить свое время и эффективность.
+                        </div>
+                    </div>
+                </div>
+                <div class="screen_4__item">
+                    <div class="screen_4__img">
+                        <img src="{% static 'images/why_3.png' %}" alt="Разрядка и снятие стресса">
+                    </div>
+                    <div class="screen_4__block">
+                        <h3 class="screen_4__title">Разрядка и снятие стресса</h3>
+                        <div class="screen_4__text">Когда вы записываете свои мысли и чувства, это помогает вам
+                            выразить свои эмоции, что в свою очередь снижает уровень стресса и тревоги.
+                        </div>
+                    </div>
+                </div>
+                <div class="screen_4__item">
+                    <div class="screen_4__img">
+                        <img src="{% static 'images/why_4.png' %}" alt="Разрядка и снятие стресса">
+                    </div>
+                    <div class="screen_4__block">
+                        <h3 class="screen_4__title">Развитие памяти</h3>
+                        <div class="screen_4__text">Регулярное ведение дневника улучшает память, так как вы учитесь
+                            вспоминать и записывать свои мысли и события.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="screen_5 dr-section" id="start">
+        <div class="container">
+            <div class="title-group">
+                <h2 class="title">Начните вести свой дневник <br>
+                    в Мой дневник уже сегодня</h2>
+            </div>
+            <div class="screen_5__block">
+                <div class="screen_5__row">
+                    <div class="screen_5__img">
+                        <div class="screen_5__img-wrap">
+                            <img src="{% static 'images/girl_1.png' %}"
+                                 alt="Как начать вести дневник" title="Как начать вести дневник">
+                        </div>
+                    </div>
+                    <div class="screen_5__col">
+                        <div class="screen_5__step-list">
+                            <div class="screen_5__step">
+                                <div class="screen_5__step-number">1</div>
+                                <div class="screen_5__step-text">
+                                    <b>Зарегистрируйтесь</b> на сайте. Всё, что нужно, это ввести почту, придумать
+                                    никнейм и пароль.
+                                </div>
+                            </div>
+                            <div class="screen_5__step">
+                                <div class="screen_5__step-number">2</div>
+                                <div class="screen_5__step-text">
+                                    <b>Создайте</b> новую запись. На сегодняшний день или на любой другой, прошедший
+                                    или будущий.
+                                </div>
+                            </div>
+                            <div class="screen_5__step">
+                                <div class="screen_5__step-number">3</div>
+                                <div class="screen_5__step-text">
+                                    <b>Запишите</b> свои мысли. Или зарисуйте. Или оформите стикерами. Picnote даёт
+                                    вам полную творческую свободу!
+                                </div>
+                            </div>
+                        </div>
+                        {% if not user.is_authenticated %}
+                        <div class="screen_5__action">
+                            <a href="{% url 'users:register' %}" class="btn btn-success btn-lg">Завести дневник</a>
+                        </div>
+                        {% else %}
+                        <div class="screen_5__action">
+                            <a href="{% url 'diary:list' %}" class="btn btn-success btn-lg">Мои записи</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
