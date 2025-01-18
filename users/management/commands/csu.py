@@ -7,28 +7,28 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Создание администратора
         self.create_admin_user(
-            email='admin@admin.ru',
-            first_name='AdminName',
-            last_name='AdminLastname',
-            username='admin_acc',
-            password='admin'  # Обновите пароль на нужный
+            email="admin@admin.ru",
+            first_name="AdminName",
+            last_name="AdminLastname",
+            username="admin_acc",
+            password="admin",
         )
 
         # Создание обычного пользователя
         self.create_regular_user(
-            email='user1@example.com',
-            first_name='User',
-            last_name='One',
-            username='user_one',
-            password='userpassword1'
+            email="user1@example.com",
+            first_name="User",
+            last_name="One",
+            username="user_one",
+            password="userpassword1",
         )
 
         self.create_regular_user(
-            email='user2@example.com',
-            first_name='User',
-            last_name='Two',
-            username='user_two',
-            password='userpassword2'
+            email="user2@example.com",
+            first_name="User",
+            last_name="Two",
+            username="user_two",
+            password="userpassword2",
         )
 
     def create_admin_user(self, email, first_name, last_name, username, password):
@@ -42,7 +42,9 @@ class Command(BaseCommand):
         )
         user.set_password(password)
         user.save()
-        self.stdout.write(self.style.SUCCESS(f'Admin user {username} created successfully.'))
+        self.stdout.write(
+            self.style.SUCCESS(f"Admin user {username} created successfully.")
+        )
 
     def create_regular_user(self, email, first_name, last_name, username, password):
         user = User.objects.create(
@@ -55,4 +57,6 @@ class Command(BaseCommand):
         )
         user.set_password(password)
         user.save()
-        self.stdout.write(self.style.SUCCESS(f'Regular user {username} created successfully.'))
+        self.stdout.write(
+            self.style.SUCCESS(f"Regular user {username} created successfully.")
+        )

@@ -9,7 +9,7 @@ def get_articles_from_cache():
     if not CACHE_ENABLED:
         return Diary.objects.all()
     else:
-        key = 'diary'
+        key = "diary"
         cache_data = cache.get(key)
         if cache_data is not None:
             return cache_data
