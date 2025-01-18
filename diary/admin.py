@@ -5,4 +5,8 @@ from diary.models import Diary
 
 @admin.register(Diary)
 class DiaryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description',)
+    list_display = (
+        "title",
+        "description",
+        "owner",
+    )
