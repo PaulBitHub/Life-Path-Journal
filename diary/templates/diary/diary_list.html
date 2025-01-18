@@ -5,31 +5,32 @@
 <main class="main-box lock">
     <div class="content-auto">
         <div class="album py-5 page page-home" style="background-image: linear-gradient(145deg,rgba(131,206,237,1)28.203505277633667%,rgba(122,191,255,1)100%);">
-            <h1 class="text_list" style="color: #FFF;">{{ title }}</h1><br>
+            <h1 class="text_list text-center" style="color: #000;">{{ title }}</h1><br>
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center">
                     {% for object in object_list %}
-                    <div class="col-md-3">
-                        <div class="card mb-4 box-shadow">
-                            <div class="card-header">
-                                <div class="card-title">
-                                    <h3 class="text-center">{{ object.title }}</h3>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <p class="text-center">{{ object.cd_date }}</p>
-                                <div class="form-center">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a class="btn btn-sm btn-outline-secondary"
-                                               href="{% url 'diary:detail' object.pk %}">Просмотр</a>
-                                            <a class="btn btn-sm btn-outline-secondary"
-                                               href="{% url 'diary:update' object.pk %}">Редактировать</a>
-                                            <a class="btn btn-sm btn-outline-secondary"
-                                               href="{% url 'diary:delete' object.pk%}">Удалить</a>
-                                        </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card box-shadow h-100">
+                            <img class="card-img-top" src="{{ object.image | media_filter }}" alt="{{ object.title }}" style="height: 150px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-center">
+                                    {{ object.title }}
+                                </h5>
+                                <p class="card-text text-center" style="margin-top: auto;">{{ object.cd_date }}</p>
+                                <div style="display: flex; justify-content: center;" class="mt-3">
+                                    <div class="btn-group w-auto">
+                                        <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:detail' object.pk %}">Просмотр</a>
+                                        {% if user.owner %}
+                                            <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:update' object.pk %}">Редактировать</a>
+                                        {% endif %}
+                                        <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:delete' object.pk %}">Удалить</a>
                                     </div>
                                 </div>
+                                {% if user.is_staff or user.is_superuser %}
+                                    <p style="font-style: italic; color: gray; font-size: 0.8em;">
+                                        {{ object.owner }}
+                                    </p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

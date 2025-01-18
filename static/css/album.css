@@ -37,3 +37,46 @@ footer p {
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.card {
+    height: 100%; /* Это гарантирует, что все карточки имеют одинаковую высоту */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1; /* Заставляет тело карточки занимать оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяет пространство между элементами */
+}
+
+.card-title {
+  position: relative;
+  overflow: hidden;
+  line-height: 1.4;
+  display: inline-block; /* Необходимо для маски */
+  max-height: calc(1.4em * 2);
+}
+
+.card-title::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, white);
+}
+
+
+.card-title::before {
+    content: "...";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    mask: linear-gradient(to left, black, transparent);
+}

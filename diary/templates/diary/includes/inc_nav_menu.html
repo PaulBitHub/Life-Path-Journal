@@ -1,12 +1,29 @@
 {% load my_tags %}
 {% load static %}
+<style>
+    /* Стиль для фиксированной шапки */
+    .header {
+        background-color: #fff; /* Цвет фона */
+        border-bottom: 1px solid #ddd; /* Граница снизу для визуального разделения */
+        width: 100%; /* Полная ширина */
+        position: fixed; /* Фиксированное положение */
+        top: 0; /* Прикреплено к верхней части экрана */
+        left: 0; /* Выровнено по левому краю */
+        z-index: 1000; /* Чтобы быть поверх остальных элементов */
+    }
+
+    /* Отступ для основного содержимого, чтобы оно не перекрывалось шапкой */
+    .content {
+        margin-top: 80px; /* Увеличьте, если шапка выше */
+    }
+</style>
+
 <header class="header">
     <div class="container-fluid">
         <div class="header-content">
-            <div class="header-left" style="display: flex; align-items: center;"> <!-- Добавлен flex и выравнивание по центру -->
+            <div class="header-left" style="display: flex; align-items: center;">
                 <img src="{% static 'images/logo.png' %}" width="50" height="50">
-                <!-- Кнопка "Главная" добавлена здесь -->
-                <a href="{% url 'diary:index' %}" class="btn btn-purple ms-3">Главная</a> <!-- `ms-3` добавляет отступ слева -->
+                <a href="{% url 'diary:index' %}" class="btn btn-purple ms-3">Главная</a>
             </div>
             {% if user.is_authenticated %}
             <div class="header-box">
@@ -22,9 +39,9 @@
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                              xmlns="http://www.w3.org/2000/svg" class="dr-input__icon-icon">
                             <path
-                                    d="M9.58329 17.5001C13.9555 17.5001 17.5 13.9557 17.5 9.58341C17.5 5.21116 13.9555 1.66675 9.58329 1.66675C5.21104 1.66675 1.66663 5.21116 1.66663 9.58341C1.66663 13.9557 5.21104 17.5001 9.58329 17.5001Z"
-                                    stroke="#FC9D74" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
+                                d="M9.58329 17.5001C13.9555 17.5001 17.5 13.9557 17.5 9.58341C17.5 5.21116 13.9555 1.66675 9.58329 1.66675C5.21104 1.66675 1.66663 5.21116 1.66663 9.58341C1.66663 13.9557 5.21104 17.5001 9.58329 17.5001Z"
+                                stroke="#FC9D74" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
                             <path d="M18.3333 18.3334L16.6666 16.6667" stroke="#FC9D74" stroke-width="1.5"
                                   stroke-linecap="round"
                                   stroke-linejoin="round"></path>
