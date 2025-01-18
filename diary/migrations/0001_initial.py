@@ -7,22 +7,43 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Diary',
+            name="Diary",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200, verbose_name='Наименование')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Текст')),
-                ('cd_date', models.DateField(verbose_name='Дата записи')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='diary/images/', verbose_name='Картинка')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(max_length=200, verbose_name="Наименование"),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Текст"),
+                ),
+                ("cd_date", models.DateField(verbose_name="Дата записи")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="diary/images/",
+                        verbose_name="Картинка",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Запись',
-                'verbose_name_plural': 'Записи',
+                "verbose_name": "Запись",
+                "verbose_name_plural": "Записи",
             },
         ),
     ]
