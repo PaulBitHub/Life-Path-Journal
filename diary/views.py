@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -52,10 +53,11 @@ class DiaryCreateView(CreateView):
         user = self.request.user
         diary.owner = user
         diary.save()
+        messages.success(self.request, 'Запись успешно создана!')
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("diary:list", args=[self.object.pk])
+        return reverse_lazy("diary:list")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
