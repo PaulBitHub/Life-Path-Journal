@@ -20,7 +20,7 @@
                                 <div style="display: flex; justify-content: center;" class="mt-3">
                                     <div class="btn-group w-auto">
                                         <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:detail' object.pk %}">Просмотр</a>
-                                        {% if user.owner %}
+                                        {% if object.owner == user %}
                                             <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:update' object.pk %}">Редактировать</a>
                                         {% endif %}
                                         <a class="btn btn-sm btn-outline-secondary" href="{% url 'diary:delete' object.pk %}">Удалить</a>

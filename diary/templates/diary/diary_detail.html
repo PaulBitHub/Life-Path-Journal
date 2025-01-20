@@ -18,10 +18,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a class="btn btn-success" href="{% url 'diary:list' %}" style="font-size: 20px;">Назад</a>
-                                {% if user.owner %}
+                                {% if object.owner == user %}
                                     <a class="btn btn-success" href="{% url 'diary:update' object.pk %}" style="font-size: 20px;">Изменить</a>
                                 {% endif %}
-                                {% if user.is_superuser %}
+                                {% if user.is_superuser or object.owner == user %}
                                     <a class="btn btn-success" href="{% url 'diary:delete' object.pk %}" style="color: red;">Удалить</a>
                                 {% endif %}
                             </div>
