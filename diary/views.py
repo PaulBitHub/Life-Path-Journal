@@ -25,22 +25,22 @@ def index(request):
 
 class DiaryListView(LoginRequiredMixin, ListView):
     model = Diary
+    extra_context = {'title': 'Архив записей'}
 
     def get_queryset(self):
-        user = self.request.user
-        query = self.request.GET.get("q", "")
-        queryset = get_articles_from_cache().filter(owner=user)
-        if query:
-            queryset = queryset.filter(
+        qs = get_articles_from_cache(user_id=self.request.user.id)
+
+        if query := self.request.GET.get("q", ""):
+            qs = qs.filter(
                 Q(title__icontains=query) | Q(description__icontains=query)
             )
-        return queryset
+        return qs
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = "Архив записей"
-        context
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["title"] = "Архив записей"
+    #     context
+    #     return context
 
 
 class DiaryCreateView(CreateView):
