@@ -10,6 +10,7 @@ class IsOwner(BasePermission):
             return False
         return obj.owner == request.user
 
+
 class IsModer(BasePermission):
     """Проверяет, является ли пользователь модератором"""
 

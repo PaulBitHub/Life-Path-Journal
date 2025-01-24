@@ -25,15 +25,13 @@ def index(request):
 
 class DiaryListView(LoginRequiredMixin, ListView):
     model = Diary
-    extra_context = {'title': 'Архив записей'}
+    extra_context = {"title": "Архив записей"}
 
     def get_queryset(self):
         qs = get_articles_from_cache(user_id=self.request.user.id)
 
         if query := self.request.GET.get("q", ""):
-            qs = qs.filter(
-                Q(title__icontains=query) | Q(description__icontains=query)
-            )
+            qs = qs.filter(Q(title__icontains=query) | Q(description__icontains=query))
         return qs
 
     # def get_context_data(self, **kwargs):
@@ -53,7 +51,7 @@ class DiaryCreateView(CreateView):
         user = self.request.user
         diary.owner = user
         diary.save()
-        messages.success(self.request, 'Запись успешно создана!')
+        messages.success(self.request, "Запись успешно создана!")
         return super().form_valid(form)
 
     def get_success_url(self):
