@@ -61,8 +61,8 @@
 1. **Проверьте, установлено ли приложение Docker** на вашем компьютере.
 
 2. **Клонировать репозиторий:**
-   - `git clone https://github.com/tomikil/PersonalDiary.git`
-   - Перейдите в папку с проектом (пример: `cd PersonalDiary`).
+   - `git clone https://github.com/PaulBitHub/Life-Path-Journal.git`
+   - Перейдите в папку с проектом.
 
 ### Настройка
 1. **Создайте файл `.env` с переменными окружения:**
